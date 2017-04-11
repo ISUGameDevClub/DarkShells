@@ -2,10 +2,10 @@
  * handles both buttons for adding alarms
  */
 
-public class JButton {
+public class Button {
 	
 	//constructor
-	public JButton(){
+	public Button(){
 		
 	}
 	
