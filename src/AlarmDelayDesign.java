@@ -5,7 +5,7 @@
 public class AlarmDelayDesign {
 	
 	//constructor
-	public AlarmDelayDesign(){
+	public AlarmDelayDesign(AlarmListDesign ald){
 		
 	}
 	

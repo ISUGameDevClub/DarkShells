@@ -13,7 +13,7 @@ import javax.swing.JTextArea;
 
 public class AlarmViewDesign extends JPanel implements ActionListener{
 	public AlarmViewDesign(String name){
-		super(new GridLayout(1, 1));
+		super(new GridLayout(1, 2));
 		JPanel avd = new JPanel();
 		
 		//add the time label
