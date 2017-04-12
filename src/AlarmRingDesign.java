@@ -16,24 +16,23 @@ public class AlarmRingDesign {
 	JFrame frame = new JFrame();
 	//constructor
 	public AlarmRingDesign(String message){
-		JTextField time = new JTextField(5);
-	    JButton name = new JButton();
-
-	    JPanel myPanel = new JPanel();
-	    myPanel.setSize(200, 480);
-	    myPanel.add(new JLabel("Label:"));
-	    myPanel.add(name);
-	    myPanel.add(Box.createVerticalStrut(15)); // a spacer
-	    myPanel.add(new JLabel("Minutes:"));
-	    myPanel.add(time);
-
-	    int result = JOptionPane.showConfirmDialog(null, myPanel, 
-	    		"Please enter the length of the timer",
-	    		JOptionPane.OK_CANCEL_OPTION);
-	    if (result == JOptionPane.OK_OPTION) {
-	      
-	    }
-	    
+//		JTextField time = new JTextField(5);
+//	    JButton name = new JButton();
+//
+//	    JPanel myPanel = new JPanel();
+//	    myPanel.setSize(200, 480);
+//	    myPanel.add(new JLabel("Label:"));
+//	    myPanel.add(name);
+//	    myPanel.add(Box.createVerticalStrut(15)); // a spacer
+//	    myPanel.add(new JLabel("Minutes:"));
+//	    myPanel.add(time);
+//
+//	    int result = JOptionPane.showConfirmDialog(null, myPanel, 
+//	    		"Please enter the length of the timer",
+//	    		JOptionPane.OK_CANCEL_OPTION);
+//	    if (result == JOptionPane.OK_OPTION) {
+//	      
+//	    }
 	    
 	    Object[] options = {"Snooze",
                 "End"};

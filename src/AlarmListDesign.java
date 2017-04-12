@@ -16,16 +16,16 @@ import javax.swing.JTextArea;
 public class AlarmListDesign extends JPanel implements ActionListener{
 	private JPanel ald;
 	private JScrollPane vert;
-	private JPanel other;
+	private JPanel listView;
 	
 	//constructor
 	public AlarmListDesign(){
-		other = new JPanel();
+		listView = new JPanel();
 		AlarmViewDesign test = new AlarmViewDesign("Tester");
-		other.add(test);
-		other.setVisible(true);
+		listView.add(test.init());
+		listView.setVisible(true);
 		
-		JScrollPane vert = new JScrollPane(other);
+		vert = new JScrollPane(listView);
         vert.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         vert.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         vert.setBounds(50, 30, 360, 320);
