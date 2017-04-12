@@ -3,6 +3,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 /*
  * Provides a panel for the list of alarms.
@@ -11,18 +13,23 @@ import javax.swing.JScrollBar;
 
 public class AlarmListDesign extends JPanel implements ActionListener{
 	private JPanel ald;
+	private JScrollPane vert;
 	
 	//constructor
 	public AlarmListDesign(){
 		ald = new JPanel();
+		vert = new JScrollPane(ald);
 		
-		JScrollBar vert= new JScrollBar();
-		ald.add(vert);
+		
+		AlarmViewDesign test = new AlarmViewDesign("Tester");
+		vert.add(test);
+		
+		ald.setVisible(true);
 	}
 	
 	//add an alarm to the list
 	public void add(AlarmViewDesign avd){
-		ald.add(avd);
+		vert.add(avd);
 	}
 	
 	//refreshes the program after any edit to the list

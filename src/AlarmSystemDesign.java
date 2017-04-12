@@ -1,3 +1,5 @@
+import java.awt.GridLayout;
+
 import javax.swing.JFrame;
 
 /*
@@ -15,12 +17,11 @@ public class AlarmSystemDesign {
 		
 		
 		frame = new JFrame("Set an Alarm");
+		frame.setLayout(new GridLayout(2,1));
 		frame.getContentPane().add(button.init());
 		frame.getContentPane().add(ald.init());
-		frame.setSize(800, 480);
+		frame.setSize(480, 800);
 		frame.setVisible(true);
-		
-		
 	}
 	
 	//initialization method
