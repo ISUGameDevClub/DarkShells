@@ -18,6 +18,7 @@ public class AlarmViewDesign extends JPanel implements ActionListener{
 		
 		//add the time label
 		JTextArea alarmTimeLabel = new JTextArea();
+		alarmTimeLabel.setSize(100, 480);
 		alarmTimeLabel.setText(name);
 		alarmTimeLabel.setEditable(false);
 		avd.add(alarmTimeLabel);
