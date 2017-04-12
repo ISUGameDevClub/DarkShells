@@ -35,8 +35,14 @@ public class XmlManager {
 	public void write(String name, String time) throws Exception
 	{
 		SaveState s = read();
-		System.out.println(s.toString());
 		s.addAlarm(new Alarm(name, time));
+		writer.marshal(s, axml);
+	}
+	
+	public void delete(String name) throws Exception
+	{
+		SaveState s = read();
+		s.deleteAlarm(name);
 		writer.marshal(s, axml);
 	}
 	

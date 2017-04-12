@@ -1,5 +1,6 @@
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 @XmlRootElement(name="SaveState")
 public class SaveState {
@@ -26,10 +27,12 @@ public class SaveState {
 	
 	public void deleteAlarm(String alarmName)
 	{
-		for(Alarm a : alarms)
+		Iterator<Alarm> iter = alarms.iterator();
+		while(iter.hasNext())
 		{
+			Alarm a = iter.next();
 			if(a.getName().equals(alarmName))
-				alarms.remove(a);
+				iter.remove();
 		}
 	}
 	

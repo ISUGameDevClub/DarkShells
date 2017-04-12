@@ -15,10 +15,6 @@ public class Alarm {
 	
 	public Alarm(String n, String t)
 	{
-		if(t != null)
-			System.out.println(t);
-		else
-			System.out.println("null");
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 		
 		time = LocalDateTime.parse(t, format);
@@ -49,10 +45,10 @@ public class Alarm {
 		return split[0] + " " + split[1];
 	}
 	
-	public LocalDateTime getDateTime()
-	{
-		return time;
-	}
+//	public LocalDateTime getDateTime()
+//	{
+//		return time;
+//	}
 	
 	public void setTime(LocalDateTime t)
 	{
