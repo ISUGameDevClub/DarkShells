@@ -16,23 +16,20 @@ public class AlarmViewDesign extends JPanel implements ActionListener{
 	
 	public AlarmViewDesign(String name){
 		avd = new JPanel();
-//		avd.setLayout(new GridLayout(1, 2));
-//		
-//		JTextArea alarmTimeLabel = new JTextArea();
-//		JButton alarmDelete = new JButton("Delete");
-//		alarmTimeLabel.setText(name);
-//		alarmTimeLabel.setEditable(false);
-//		alarmDelete.setActionCommand("delete");
-//		alarmDelete.addActionListener(this);
-//		
-//		avd.add(alarmTimeLabel);
-//		avd.add(alarmDelete);
-//		
-//		avd.setVisible(true);
+		avd.setLayout(new GridLayout(1, 2));
 		
-		JTextArea alarmTimeLabel = new JTextArea(50, 310);
+		JTextArea alarmTimeLabel = new JTextArea();
+		JButton alarmDelete = new JButton("Delete");
+		alarmTimeLabel.setText(name);
+		alarmTimeLabel.setEditable(false);
+		alarmDelete.setActionCommand("delete");
+		alarmDelete.addActionListener(this);
+		
 		avd.add(alarmTimeLabel);
+		avd.add(alarmDelete);
+		
 		avd.setVisible(true);
+
 	}
 	
 	//this needs to be a button.
