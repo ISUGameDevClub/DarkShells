@@ -34,7 +34,7 @@ public class AlarmTimeDesign {
 	       this.name = name.getText();
 	       this.time = time.getText();
 	       
-	       createAlarm(this.time, this.time, this.name);
+	       createAlarm(this.name, this.time);
 	    }
 		
 	}
@@ -43,9 +43,5 @@ public class AlarmTimeDesign {
 	public void createAlarm(String name, String time){	
 		Alarm alm = new Alarm(name, time);
 	}
-	
-	//alarm creation with message
-	public void createAlarm(String name, String time, String message){
-		Alarm alm = new Alarm(name, time, message);
-	}
+
 }

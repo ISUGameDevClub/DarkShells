@@ -35,17 +35,12 @@ public class AlarmDelayDesign {
 	       this.name = name.getText();
 	       this.time = time.getText();
 	       
-	       createAlarm(this.time, this.time, this.name);
+	       createAlarm(this.name, this.time);
 	    }
 	}
 	
 	//alarm creation method
 	public void createAlarm(String name, String time){	//time can be a number value, that's just temporary
-		
-	}
-	
-	//alarm creation with message
-	public void createAlarm(String name, String time, String message){
-		
+		Alarm alm = new Alarm(name, time);
 	}
 }
