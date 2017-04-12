@@ -12,9 +12,11 @@ import javax.swing.JTextArea;
  */
 
 public class AlarmViewDesign extends JPanel implements ActionListener{
+	JPanel avd;
+	
 	public AlarmViewDesign(String name){
 		super(new GridLayout(1, 2));
-		JPanel avd = new JPanel();
+		avd = new JPanel();
 		
 		//add the time label
 		JTextArea alarmTimeLabel = new JTextArea();
@@ -27,6 +29,7 @@ public class AlarmViewDesign extends JPanel implements ActionListener{
 		deleteAlarmView.setActionCommand("delete");
 		deleteAlarmView.addActionListener(this);
 		avd.add(deleteAlarmView);
+		
 	}
 	
 	//this needs to be a button.
@@ -40,5 +43,10 @@ public class AlarmViewDesign extends JPanel implements ActionListener{
 			deleteAlarm();
 		}
 		
+	}
+	
+	//initialization
+	public JPanel init(){
+		return avd;
 	}
 }

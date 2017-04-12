@@ -15,7 +15,6 @@ public class AlarmSystemDesign {
 		AlarmListDesign ald = new AlarmListDesign();
 		ButtonPanel button = new ButtonPanel(ald);
 		
-		
 		frame = new JFrame("Set an Alarm");
 		frame.setLayout(new GridLayout(2,1));
 		frame.getContentPane().add(button.init());

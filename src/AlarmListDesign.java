@@ -1,3 +1,4 @@
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,17 +16,20 @@ import javax.swing.JTextArea;
 public class AlarmListDesign extends JPanel implements ActionListener{
 	private JPanel ald;
 	private JScrollPane vert;
+	private JPanel other;
 	
 	//constructor
 	public AlarmListDesign(){
-		ald = new JPanel();
-		vert = new JScrollPane(ald);
 		
-		AlarmViewDesign test = new AlarmViewDesign("Tester");
-		vert.add(test);
-		
-		ald.setVisible(true);
-		vert.setVisible(true);
+		JScrollPane vert = new JScrollPane(other);
+        vert.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        vert.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        vert.setBounds(50, 30, 360, 320);
+        vert.setVisible(true);
+        ald = new JPanel(null);
+        ald.setPreferredSize(new Dimension(600, 480));
+        ald.add(vert);
+        
 	}
 	
 	//add an alarm to the list
