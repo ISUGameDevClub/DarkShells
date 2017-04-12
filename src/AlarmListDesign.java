@@ -20,10 +20,14 @@ public class AlarmListDesign extends JPanel implements ActionListener{
 	
 	//constructor
 	public AlarmListDesign(){
+		other = new JPanel();
+		AlarmViewDesign test = new AlarmViewDesign("Tester");
+		other.add(test);
+		other.setVisible(true);
 		
 		JScrollPane vert = new JScrollPane(other);
         vert.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        vert.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        vert.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         vert.setBounds(50, 30, 360, 320);
         vert.setVisible(true);
         ald = new JPanel(null);
