@@ -1,1 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?><alarm><alarm><name>one</name><time>2017-04-03 05:00</time></alarm><alarm><name>two</name><time>2017-04-03 05:00</time></alarm></alarm>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SaveState>
+    <alarms>
+        <alarm>
+            <name>one</name>
+            <time>2017-08-16 11:00</time>
+        </alarm>
+        <alarm>
+            <name>one</name>
+            <time>2017-08-16 11:00</time>
+        </alarm>
+    </alarms>
+</SaveState>

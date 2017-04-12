@@ -5,7 +5,7 @@ public class ReadWriteTest {
 		
 		Scanner in = new Scanner(System.in);
 		try {
-			XmlWriter x = new XmlWriter("src/Alarm.xml");
+			XmlManager x = new XmlManager("src/Alarm.xml");
 			
 			String input = new String();
 			while(!input.equals("e"))
@@ -15,7 +15,7 @@ public class ReadWriteTest {
 				if(!input.equals("e"))
 				{
 					String[] nameDate = input.split(",");
-					x.writeAlarm(nameDate[0], nameDate[1]);
+					x.write(nameDate[0], nameDate[1]);
 				}
 			}
 			

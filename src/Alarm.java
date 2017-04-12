@@ -1,11 +1,8 @@
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
-import javax.xml.bind.annotation.XmlAttribute;  
+ 
 import javax.xml.bind.annotation.XmlElement;  
-import javax.xml.bind.annotation.XmlRootElement; 
 
-@XmlRootElement
 public class Alarm {
 	
 	private String name;
@@ -18,7 +15,12 @@ public class Alarm {
 	
 	public Alarm(String n, String t)
 	{
+		if(t != null)
+			System.out.println(t);
+		else
+			System.out.println("null");
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		
 		time = LocalDateTime.parse(t, format);
 		name = n;
 	}
@@ -29,7 +31,7 @@ public class Alarm {
 		time = t;
 	}
 	
-	@XmlAttribute
+	@XmlElement
 	public String getName()
 	{
 		return name;
@@ -43,7 +45,8 @@ public class Alarm {
 	@XmlElement
 	public String getTime()
 	{
-		return time.toString();
+		String[] split = time.toString().split("T");
+		return split[0] + " " + split[1];
 	}
 	
 	public LocalDateTime getDateTime()
@@ -54,6 +57,12 @@ public class Alarm {
 	public void setTime(LocalDateTime t)
 	{
 		time = t;
+	}
+	
+	public void setTime(String t)
+	{
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		time = LocalDateTime.parse(t, format);
 	}
 	
 }
