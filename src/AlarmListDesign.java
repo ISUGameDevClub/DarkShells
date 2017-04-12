@@ -1,3 +1,4 @@
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,11 +21,11 @@ public class AlarmListDesign extends JPanel implements ActionListener{
 		ald = new JPanel();
 		vert = new JScrollPane(ald);
 		
-		
 		AlarmViewDesign test = new AlarmViewDesign("Tester");
 		vert.add(test);
 		
 		ald.setVisible(true);
+		vert.setVisible(true);
 	}
 	
 	//add an alarm to the list

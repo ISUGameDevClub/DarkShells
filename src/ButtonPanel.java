@@ -20,8 +20,8 @@ public class ButtonPanel extends JPanel implements ActionListener{
 		buttons = new JPanel();
 		buttons.setLayout(new GridLayout(1, 2));
 		
-		JButton alarmDelay = new JButton("Timer");
-		JButton alarmSet = new JButton("Alarm");
+		JButton alarmDelay = new JButton("Alarm");
+		JButton alarmSet = new JButton("Timer");
 		alarmDelay.setActionCommand("create delay");
 		alarmDelay.addActionListener(this);
 		alarmSet.setActionCommand("create set");
