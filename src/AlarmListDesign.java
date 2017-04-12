@@ -13,7 +13,7 @@ import javax.swing.JTextArea;
  * 
  */
 
-public class AlarmListDesign extends JPanel implements ActionListener{
+public class AlarmListDesign extends JPanel{
 	private JPanel ald;
 	private JScrollPane vert;
 	private JPanel listView;
@@ -38,7 +38,7 @@ public class AlarmListDesign extends JPanel implements ActionListener{
 	
 	//add an alarm to the list
 	public void add(AlarmViewDesign avd){
-		vert.add(avd);
+		listView.add(avd);
 	}
 	
 	//refreshes the program after any edit to the list
@@ -49,11 +49,5 @@ public class AlarmListDesign extends JPanel implements ActionListener{
 	//the initialization method
 	public JPanel init(){
 		return ald;
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 }
