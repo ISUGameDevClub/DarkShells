@@ -24,7 +24,6 @@ public class Enemy_Move_And_Jump : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		moveX = transform.position.x;
-		ChangeDirection();
 		JumpEnemy();
 	}
 
@@ -49,6 +48,7 @@ public class Enemy_Move_And_Jump : MonoBehaviour {
 	void JumpEnemy(){
 		if(rb.IsTouchingLayers(Physics2D.AllLayers)){
 			rb.AddForce(new Vector2(0, jumpPower));
+			ChangeDirection();
 		}
 	}
 }
