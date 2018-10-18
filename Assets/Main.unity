@@ -170,7 +170,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 20
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -267,9 +267,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 413388cb44afe8f40a66ecdc4c9ad099, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2b52730d61f7c0848be4ca3f783b1838, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.92, y: 3.06}
@@ -327,14 +327,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.92, y: 3.06}
+    oldSize: {x: 8, y: 8}
     newSize: {x: 1.92, y: 3.06}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.92, y: 3.06}
+  m_Size: {x: 8, y: 6}
   m_EdgeRadius: 0
 --- !u!114 &356268420
 MonoBehaviour:
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 10
-  jumpPower: 1250
+  jumpPower: 2000
 --- !u!114 &356268421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,9 +395,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1226f72abafe12941ba8eadcd1f3e057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpeed: 3
-  leftLimit: -3
-  rightLimit: 3
+  enemySpeed: 10
+  leftLimit: -10
+  rightLimit: 10
 --- !u!61 &1154221817
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -414,14 +414,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.96, y: 0.88}
+    oldSize: {x: 8, y: 8}
     newSize: {x: 0.96, y: 0.88}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.96, y: 0.88}
+  m_Size: {x: 7, y: 4}
   m_EdgeRadius: 0
 --- !u!50 &1154221818
 Rigidbody2D:
@@ -442,7 +442,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1154221819
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -478,7 +478,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300016, guid: 413388cb44afe8f40a66ecdc4c9ad099, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 785dce526e0685349ac43f27571f1cbb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -496,7 +496,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1154221815}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.44, z: 0}
+  m_LocalPosition: {x: 5, y: 0.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -513,9 +513,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5833b84f80186d449367ece3b31d320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpeed: 3
-  leftLimit: -3
-  rightLimit: 3
+  enemySpeed: 7
+  leftLimit: -7
+  rightLimit: 7
   jumpPower: 100
 --- !u!1 &1297911923
 GameObject:
@@ -587,8 +587,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1297911923}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.281, y: -3.324, z: 0}
-  m_LocalScale: {x: 19.23445, y: 1.5209829, z: 1}
+  m_LocalPosition: {x: 0.281, y: -10, z: 0}
+  m_LocalScale: {x: 50, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
