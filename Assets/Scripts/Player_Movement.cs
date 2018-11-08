@@ -67,4 +67,19 @@ public class Player_Movement : MonoBehaviour {
             isGrounded = false;
         }
     }
+
+    //checks where player currently is
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+    }
+
+    //sets playerSpeed
+    public void SetPlayerSpeed(int newSpeed)
+    {
+        playerSpeed = newSpeed;
+    }
 }
