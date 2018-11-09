@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d5c76e0671709c44db98af02701d90d4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - character: {instanceID: 0}
+  - condimentAPrefab: {fileID: 1142840963902140, guid: bfaacb13dbbe7cd47a8513a115a2b34b,
+      type: 2}
+  - condimentBPrefab: {fileID: 1058871604195072, guid: a29d918960105c941bd25a4bc3007f37,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
