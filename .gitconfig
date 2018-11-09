@@ -3,4 +3,10 @@ tool = unityyamlmerge
 
 [mergetool “unityyamlmerge”]
 trustExitCode = false
-cmd = "C:\Program Files\Unity\Editor\Data\Tools\UnityYAMLMerge.exe" merge -p “$BASE” “$REMOTE” “$LOCAL” “$MERGED”
+keepTemporaries = true
+keepBackup = false
+path = 'C:\\Program Files\\Unity\\Editor\\Data\\Tools\\UnityYAMLMerge.exe'
+cmd = 'C:\\Program Files\\Unity\\Editor\\Data\\Tools\\UnityYAMLMerge.exe' merge -p “$BASE” “$REMOTE” “$LOCAL” “$MERGED”
+
+[diff "unity"]
+      textconv='C:\\Users\\Administrator\\Documents\\unityYamlTextConv.py'
