@@ -5,12 +5,14 @@ using UnityEngine;
 //This script will be in a game object whose job is to keep track of all the falling objects in the game, including randomly spawning the various kinds at the top of the screen 
 //within camera range.
 //Created by Michael Reyes
+/* Idea/Algorithm
+ * Go through masterList and randomly choose a type of condiment to drop.
+ *  ----In that condiment list, if the condiment's Object doesnt exist yet, create it. Else, move the invisible condiment to top of screen and set to revisible.
+ *  ~ Repeat ~
+ * 
+ */
 public class Falling_Behavior_Manager : MonoBehaviour {
-
-    //private ArrayList masterList;
-    //Include lists of all falling objects(condiments)...
-    //private int numCondiments = 2;
-
+    
     private GameObject[] condimentA;
     private int maxNumCondimentsA = 5;                             
     private int numCondimentsA;
@@ -20,14 +22,11 @@ public class Falling_Behavior_Manager : MonoBehaviour {
     private int maxNumCondimentsB = 5;
     private int numCondimentsB;
     private int condimentBCounter;
-
-    //private int currentlySellectedCondiment;
-
+    
     System.Random rand;
     private float aboveCameraHeight;
     private float randomPositionXAxis;
 
-    //private GameObject camera;
     public GameObject character;
     public GameObject condimentAPrefab;
     public GameObject condimentBPrefab;
@@ -35,27 +34,29 @@ public class Falling_Behavior_Manager : MonoBehaviour {
     private float timeSinceLastSpawn;
     private float spawnRate = 1f; //Every nf seconds...
 
+    public GameObject killLine;
+
+    private float distanceFromPlayerDespawn;
+
     // Use this for initialization
     void Start () {
         condimentA = new GameObject[maxNumCondimentsA];
         condimentB = new GameObject[maxNumCondimentsB];
-        //masterList = new ArrayList<GameObject>();
-        //masterList.Add(condimentA); //masterList[0]
-        //masterList.Add(condimentB); //masterList[1]
         numCondimentsA = 0;
         condimentACounter = 0;
         numCondimentsB = 0;
         condimentBCounter = 0;
         rand = new System.Random();
-        //camera = GameObject.Find("Main Camera"); //Idk if I need this. Camera.main. ... might work instead.
-        //https://docs.unity3d.com/ScriptReference/Camera-orthographicSize.html
         timeSinceLastSpawn = 0;
         character = GameObject.Find("Player");
+        killLine = GameObject.Find("Kill Line");
+        distanceFromPlayerDespawn = 16f;
     }
 
     // Update is called once per frame
     void Update () {
         checkCondimentsCollected();
+        checkDeadCondiments();
         checkTimePassed();
         randomPositionXAxis = rand.Next((int)Camera.main.transform.position.x-((int)Camera.main.orthographicSize), (int)Camera.main.transform.position.x + ((int)Camera.main.orthographicSize)); //Random number within the camera view. 
         aboveCameraHeight = (Camera.main.transform.position.y + Camera.main.orthographicSize);
@@ -67,7 +68,6 @@ public class Falling_Behavior_Manager : MonoBehaviour {
         if (timeSinceLastSpawn >= spawnRate)
         {
             timeSinceLastSpawn = 0;
-            //Debug.Log("I should work"); //IT DOES
             spawnCondiment(rand.Next(0, 2)); //Random number between 0 and 1;
         }
     }
@@ -89,8 +89,7 @@ public class Falling_Behavior_Manager : MonoBehaviour {
             else if(condimentA[condimentACounter].gameObject.activeInHierarchy == false) //If the object is invisible, it means the condiment has been picked up, so we can reuse it. Else, we should not move it.
             {
                 //move that specific condiment to a random location above the screen(specific height) so it can fall down again, and set it to active/visible again.
-                condimentA[condimentACounter].GetComponent<Rigidbody2D>().transform.position = new Vector2(randomPositionXAxis,7); //Changes position
-                //condimentA[condimentACounter].GetComponent<MeshRenderer>().enabled = true; //Sets the object to visible. NOT NEEDED
+                condimentA[condimentACounter].GetComponent<Rigidbody2D>().transform.position = new Vector2(randomPositionXAxis,aboveCameraHeight); //Changes position
                 condimentA[condimentACounter].gameObject.SetActive(true); //Sets object to active
             }
             condimentACounter++;
@@ -111,8 +110,7 @@ public class Falling_Behavior_Manager : MonoBehaviour {
             else if (condimentB[condimentBCounter].gameObject.activeInHierarchy == false) //If the object is invisible, it means the condiment has been picked up, so we can reuse it. Else, we should not move it.
             {
                 //move that specific condiment to a random location above the screen(specific height) so it can fall down again, and set it to active/visible again.
-                condimentB[condimentBCounter].GetComponent<Rigidbody2D>().transform.position = new Vector2(randomPositionXAxis, 7); //Changes position
-                //condimentA[condimentACounter].GetComponent<MeshRenderer>().enabled = true; //Sets the object to visible. NOT NEEDED
+                condimentB[condimentBCounter].GetComponent<Rigidbody2D>().transform.position = new Vector2(randomPositionXAxis, aboveCameraHeight); //Changes position
                 condimentB[condimentBCounter].gameObject.SetActive(true); //Sets object to active
             }
             condimentBCounter++;
@@ -127,8 +125,7 @@ public class Falling_Behavior_Manager : MonoBehaviour {
             {
                 if(condimentA[i].GetComponent<Collider2D>().IsTouching(character.GetComponent<Collider2D>()) == true)
                 {
-                    //condimentA[i].GetComponent<MeshRenderer>().enabled = false; //Sets the object to invisible. NOT NEEDED
-                    condimentA[i].gameObject.SetActive(false); //Sets object to active
+                    condimentA[i].gameObject.SetActive(false); //Sets object to non-active
                 }
             }
         }
@@ -137,19 +134,49 @@ public class Falling_Behavior_Manager : MonoBehaviour {
             if (condimentB[i] != null && (condimentB[i].activeInHierarchy == true))
             {
                 if (condimentB[i].GetComponent<Collider2D>().IsTouching(character.GetComponent<Collider2D>()) == true)
+                {                    
+                    condimentB[i].gameObject.SetActive(false); //Sets object to non-active
+                }
+            }
+        }
+    }
+
+    private void checkDeadCondiments()
+    {
+        //Checks if condiments fall off platforms/collides with something that should kill them OR if the condiment is a certain distance from the player
+        for (int i = 0; i < condimentA.Length; i++)
+        {
+            if (condimentA[i] != null && (condimentA[i].activeInHierarchy == true))
+            {
+                //Checks if condiments fall off platforms/collides with something that should kill them
+                if (condimentA[i].GetComponent<CircleCollider2D>().IsTouching(killLine.GetComponent<BoxCollider2D>())) //If it is below a certain line, dead, deactivate it
                 {
-                    //condimentB[i].GetComponent<MeshRenderer>().enabled = false; //Sets the object to invisible. NOT NEEDED
-                    condimentB[i].gameObject.SetActive(false); //Sets object to active
+                    condimentA[i].gameObject.SetActive(false); //Sets object to non-active
+                }
+
+                //Checks if the condiment is a certain distance from the player
+                if(Mathf.Abs((character.GetComponent<Rigidbody2D>().transform.position.x)-(condimentA[i].GetComponent<Rigidbody2D>().transform.position.x)) > distanceFromPlayerDespawn)
+                {
+                    condimentA[i].gameObject.SetActive(false); //Sets object to non-active
+                }
+            }
+        }
+        for (int i = 0; i < condimentB.Length; i++)
+        {
+            if (condimentB[i] != null && (condimentB[i].activeInHierarchy == true))
+            {
+                //Checks if condiments fall off platforms/collides with something that should kill them
+                if (condimentB[i].GetComponent<CircleCollider2D>().IsTouching(killLine.GetComponent<BoxCollider2D>())) //If it is below a certain line, dead, deactivate it
+                {
+                    condimentB[i].gameObject.SetActive(false); //Sets object to non-active
+                }
+
+                //Checks if the condiment is a certain distance from the player
+                if (Mathf.Abs((character.GetComponent<Rigidbody2D>().transform.position.x) - (condimentB[i].GetComponent<Rigidbody2D>().transform.position.x)) > distanceFromPlayerDespawn)
+                {
+                    condimentB[i].gameObject.SetActive(false); //Sets object to non-active
                 }
             }
         }
     }
 }
-
-
-/* Idea/Algorithm
- * Go through masterList and randomly choose a type of condiment to drop.
- *  ----In that condiment list, if the condiment's Object doesnt exist yet, create it. Else, move the invisible condiment to top of screen and set to revisible.
- *  ~ Repeat ~
- * 
- */
